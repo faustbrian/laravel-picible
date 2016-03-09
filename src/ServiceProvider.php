@@ -1,29 +1,49 @@
 <?php
 
+/*
+ * This file is part of Laravel Picible.
+ *
+ * (c) DraperStudio <hello@draperstudio.tech>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace DraperStudio\Picible;
 
 use Illuminate\Foundation\Application;
-use DraperStudio\ServiceProvider\ServiceProvider as BaseProvider;
 use Intervention\Image\ImageManager;
 use InvalidArgumentException;
 
-class ServiceProvider extends BaseProvider
+/**
+ * Class ServiceProvider.
+ *
+ * @author DraperStudio <hello@draperstudio.tech>
+ */
+class ServiceProvider extends \DraperStudio\ServiceProvider\ServiceProvider
 {
-    protected $packageName = 'picible';
-
+    /**
+     * Bootstrap the application services.
+     */
     public function boot()
     {
-        $this->setup(__DIR__)
-             ->publishMigrations()
-             ->publishConfig()
-             ->mergeConfig('picible');
+        $this->publishMigrations();
+
+        $this->publishConfig();
     }
 
+    /**
+     * Register the application services.
+     */
     public function register()
     {
+        parent::register();
+
+        $this->mergeConfig();
+
         $this->app->bind(
-            'DraperStudio\Picible\Contracts\PictureRepository',
-            'DraperStudio\Picible\Repositories\EloquentPictureRepository'
+            \DraperStudio\Picible\Contracts\PictureRepository::class,
+            \DraperStudio\Picible\Repositories\EloquentPictureRepository::class
         );
 
         $this->app->singleton('DraperStudio\Picible\PicibleService', function (Application $app) {
@@ -38,6 +58,11 @@ class ServiceProvider extends BaseProvider
         });
     }
 
+    /**
+     * @param $app
+     *
+     * @return mixed
+     */
     protected function setFilesystemAdapter($app)
     {
         $adapterKey = config('picible.default');
@@ -53,12 +78,25 @@ class ServiceProvider extends BaseProvider
         return $adapter;
     }
 
-    //
-    // public function provides()
-    // {
-    //     return [
-    //         'DraperStudio\Picible\PicibleService',
-    //         'DraperStudio\Picible\PictureRepository',
-    //     ];
-    // }
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return array_merge(parent::provides(), [
+            \DraperStudio\Picible\PicibleService::class,
+            \DraperStudio\Picible\Contracts\PictureRepository::class,
+        ]);
+    }
+    /**
+     * Get the default package name.
+     *
+     * @return string
+     */
+    public function getPackageName()
+    {
+        return 'picible';
+    }
 }

@@ -9,17 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace DraperStudio\Picible\Contracts;
+namespace DraperStudio\Tests\Picible;
+
+use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 
 /**
- * Interface Picible.
+ * This is the service provider test class.
  *
  * @author DraperStudio <hello@draperstudio.tech>
  */
-interface Picible
+class ServiceProviderTest extends AbstractTestCase
 {
-    /**
-     * @return mixed
-     */
-    public function pictures();
+    use ServiceProviderTrait;
 }

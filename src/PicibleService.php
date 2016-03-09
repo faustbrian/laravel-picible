@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of Laravel Picible.
+ *
+ * (c) DraperStudio <hello@draperstudio.tech>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace DraperStudio\Picible;
 
 use DraperStudio\Picible\Contracts\Adapter;
@@ -13,26 +22,66 @@ use Intervention\Image\ImageManager;
 use InvalidArgumentException;
 use Symfony\Component\HttpFoundation\File\File;
 
+/**
+ * Class PicibleService.
+ *
+ * @author DraperStudio <hello@draperstudio.tech>
+ */
 class PicibleService
 {
+    /**
+     * @var ImageManager
+     */
     private $intervention;
 
+    /**
+     * @var Application
+     */
     protected $app;
 
+    /**
+     * @var Adapter
+     */
     protected $adapter;
 
+    /**
+     * @var PictureRepository
+     */
     protected $pictures;
 
+    /**
+     * @var
+     */
     private $file;
 
+    /**
+     * @var
+     */
     private $model;
 
+    /**
+     * @var array
+     */
     private $attributes = [];
 
+    /**
+     * @var array
+     */
     private $filters = [];
 
+    /**
+     * @var bool
+     */
     private $overwrite = false;
 
+    /**
+     * PicibleService constructor.
+     *
+     * @param PictureRepository $pictures
+     * @param Application       $app
+     * @param Adapter           $adapter
+     * @param ImageManager      $intervention
+     */
     public function __construct(PictureRepository $pictures, Application $app, Adapter $adapter, ImageManager $intervention)
     {
         $this->pictures = $pictures;
@@ -41,6 +90,11 @@ class PicibleService
         $this->intervention = $intervention;
     }
 
+    /**
+     * @param bool $overwrite
+     *
+     * @return mixed
+     */
     public function commit($overwrite = false)
     {
         $file = $this->getFile();
@@ -75,16 +129,31 @@ class PicibleService
         return $picture;
     }
 
+    /**
+     * @param $id
+     *
+     * @return mixed
+     */
     public function getById($id)
     {
         return $this->pictures->getById($id);
     }
 
+    /**
+     * @param $slot
+     *
+     * @return mixed
+     */
     public function getBySlot($slot)
     {
         return $this->pictures->getBySlot($slot, $this->getModel());
     }
 
+    /**
+     * @param Picture $picture
+     *
+     * @return mixed
+     */
     public function getShareableLink(Picture $picture)
     {
         $filters = $this->getFilters();
@@ -96,22 +165,38 @@ class PicibleService
         return $this->getAdapter()->getShareableLink($picture, $filters);
     }
 
+    /**
+     * @param Picture $picture
+     *
+     * @throws \Exception
+     */
     public function delete(Picture $picture)
     {
         $this->getAdapter()->delete($picture, $this->getFilters());
         $picture->delete();
     }
 
+    /**
+     * @param $id
+     */
     public function deleteById($id)
     {
         return $this->delete($this->getById($id), $this->getFilters());
     }
 
+    /**
+     * @param $slot
+     */
     public function deleteBySlot($slot)
     {
         return $this->delete($this->getBySlot($slot, $this->getModel()), $this->getFilters());
     }
 
+    /**
+     * @param File $file
+     *
+     * @return $this
+     */
     public function withFile(File $file)
     {
         $this->file = $file;
@@ -119,6 +204,11 @@ class PicibleService
         return $this;
     }
 
+    /**
+     * @param Picible $model
+     *
+     * @return $this
+     */
     public function withModel(Picible $model)
     {
         $this->model = $model;
@@ -126,6 +216,11 @@ class PicibleService
         return $this;
     }
 
+    /**
+     * @param array $attributes
+     *
+     * @return $this
+     */
     public function withAttributes(array $attributes)
     {
         $this->attributes = $attributes;
@@ -133,6 +228,11 @@ class PicibleService
         return $this;
     }
 
+    /**
+     * @param array $filters
+     *
+     * @return $this
+     */
     public function withFilters(array $filters)
     {
         $this->filters = $filters;
@@ -140,6 +240,12 @@ class PicibleService
         return $this;
     }
 
+    /**
+     * @param File  $picture
+     * @param array $attributes
+     *
+     * @return mixed
+     */
     protected function createPictureRecord(File $picture, array $attributes)
     {
         $meta = new Meta($picture, $this->intervention);
@@ -155,6 +261,11 @@ class PicibleService
         return $this->pictures->create($attributes);
     }
 
+    /**
+     * @param File    $file
+     * @param Picture $picture
+     * @param array   $filters
+     */
     protected function saveFile(File $file, Picture $picture, array $filters)
     {
         $pictureFile = $this->runFilters($file, $picture, $filters);
@@ -162,6 +273,13 @@ class PicibleService
         $this->getAdapter()->write($pictureFile, $picture, $filters);
     }
 
+    /**
+     * @param File    $file
+     * @param Picture $picture
+     * @param array   $filters
+     *
+     * @return Picture|\Intervention\Image\Image
+     */
     protected function runFilters(File $file, Picture $picture, array $filters)
     {
         $availableFilters = config('picible.filters');
@@ -190,6 +308,11 @@ class PicibleService
         return $picture;
     }
 
+    /**
+     * @param $driver
+     * @param $config
+     * @param $picture
+     */
     protected function applyFilter($driver, $config, $picture)
     {
         $abstract = new $driver($config);
@@ -206,26 +329,41 @@ class PicibleService
         $abstract->applyFilter($picture);
     }
 
+    /**
+     * @return Adapter
+     */
     protected function getAdapter()
     {
         return $this->adapter;
     }
 
+    /**
+     * @return mixed
+     */
     protected function getFile()
     {
         return $this->file;
     }
 
+    /**
+     * @return mixed
+     */
     protected function getModel()
     {
         return $this->model;
     }
 
+    /**
+     * @return array
+     */
     protected function getAttributes()
     {
         return $this->attributes;
     }
 
+    /**
+     * @return array
+     */
     protected function getFilters()
     {
         return $this->filters;
