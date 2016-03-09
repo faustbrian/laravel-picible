@@ -11,9 +11,6 @@ use Illuminate\Database\Schema\Blueprint;
  */
 class CreatePicibleTable extends Migration
 {
-    /**
-     *
-     */
     public function up()
     {
         Schema::create('picible_picture', function (Blueprint $table) {
@@ -38,9 +35,6 @@ class CreatePicibleTable extends Migration
         });
     }
 
-    /**
-     *
-     */
     public function down()
     {
         Schema::drop('picible_picture');

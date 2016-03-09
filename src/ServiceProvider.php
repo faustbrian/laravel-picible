@@ -90,6 +90,7 @@ class ServiceProvider extends \DraperStudio\ServiceProvider\ServiceProvider
             \DraperStudio\Picible\Contracts\PictureRepository::class,
         ]);
     }
+
     /**
      * Get the default package name.
      *
