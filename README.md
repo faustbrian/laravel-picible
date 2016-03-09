@@ -43,15 +43,6 @@ php artisan migrate
 ``` php
 <?php
 
-/*
- * This file is part of Laravel Picible.
- *
- * (c) DraperStudio <hello@draperstudio.tech>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace App;
 
 use DraperStudio\Picible\Contracts\Picible as PicibleContract;
@@ -67,8 +58,6 @@ class User extends Model implements PicibleContract {
 #### Example
 ``` php
 <?php
-
-
 
 namespace App\Http\Controllers;
 
