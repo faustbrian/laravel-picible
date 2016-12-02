@@ -12,10 +12,10 @@
 namespace BrianFaust\Picible\Adapters;
 
 use Aws\S3\S3Client;
-use BrianFaust\Picible\Contracts\ShareableInterface;
-use BrianFaust\Picible\Models\Picture;
 use BrianFaust\Flysystem\AwsS3v2\AwsS3Adapter;
 use BrianFaust\Flysystem\Filesystem;
+use BrianFaust\Picible\Contracts\ShareableInterface;
+use BrianFaust\Picible\Models\Picture;
 
 class AwsS3 extends AbstractAdapter implements ShareableInterface
 {
@@ -23,7 +23,7 @@ class AwsS3 extends AbstractAdapter implements ShareableInterface
     {
         $config = $this->loadFlysystemConfig();
         $client = S3Client::factory([
-            'key' => $config['key'],
+            'key'    => $config['key'],
             'secret' => $config['secret'],
             'region' => isset($config['region']) ? $config['region'] : null,
         ]);
