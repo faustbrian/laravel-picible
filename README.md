@@ -11,15 +11,13 @@ $ composer require faustbrian/laravel-picible
 And then include the service provider within `app/config/app.php`.
 
 ``` php
-'providers' => [
-    'BrianFaust\Picible\PicibleServiceProvider'
-];
+BrianFaust\Picible\PicibleServiceProvider::class
 ```
 
 To get started, you'll need to publish the vendor assets and modify it:
 
 ```bash
-php artisan vendor:publish
+php artisan vendor:publish --provider="BrianFaust\Picible\PicibleServiceProvider"
 ```
 
 The package configuration will now be located at `app/config/picible.php` and the migration at `database/migrations/2015_01_30_000000_create_picible_table.php`.
