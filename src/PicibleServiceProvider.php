@@ -14,8 +14,9 @@ namespace BrianFaust\Picible;
 use Illuminate\Foundation\Application;
 use Intervention\Image\ImageManager;
 use InvalidArgumentException;
+use BrianFaust\ServiceProvider\ServiceProvider;
 
-class ServiceProvider extends \BrianFaust\ServiceProvider\ServiceProvider
+class PicibleServiceProvider extends ServiceProvider
 {
     public function boot()
     {
