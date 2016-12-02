@@ -11,12 +11,12 @@
 
 namespace BrianFaust\Picible\Adapters;
 
+use BrianFaust\Flysystem\Filesystem;
 use BrianFaust\Picible\Contracts\Adapter;
 use BrianFaust\Picible\Models\Picture;
 use GrahamCampbell\Flysystem\FlysystemManager;
 use Illuminate\Support\Facades\File as IlluminateFile;
 use Intervention\Image\Image;
-use BrianFaust\Flysystem\Filesystem;
 
 abstract class AbstractAdapter implements Adapter
 {
@@ -74,7 +74,7 @@ abstract class AbstractAdapter implements Adapter
     {
         $connection = $this->connection;
 
-        if (! $connection instanceof Filesystem) {
+        if (!$connection instanceof Filesystem) {
             $connection = get_class($connection);
             throw new InvalidArgumentException("Class [$connection] does not implement Filesystem.");
         }
@@ -99,7 +99,7 @@ abstract class AbstractAdapter implements Adapter
     protected function buildHash(Picture $picture, array $filters = [])
     {
         $state = [
-            'id' => (string) $picture->getKey(),
+            'id'      => (string) $picture->getKey(),
             'filters' => $filters,
         ];
 
