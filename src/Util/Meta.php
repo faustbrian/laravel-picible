@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace BrianFaust\Picible\Util;
 
 use Intervention\Image\Facades\Image;

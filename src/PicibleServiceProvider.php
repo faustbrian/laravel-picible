@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace BrianFaust\Picible;
 
 use BrianFaust\ServiceProvider\ServiceProvider;
@@ -18,14 +20,14 @@ use InvalidArgumentException;
 
 class PicibleServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         $this->publishMigrations();
 
         $this->publishConfig();
     }
 
-    public function register()
+    public function register(): void
     {
         parent::register();
 
@@ -63,7 +65,7 @@ class PicibleServiceProvider extends ServiceProvider
         return $adapter;
     }
 
-    public function provides()
+    public function provides(): array
     {
         return array_merge(parent::provides(), [
             \BrianFaust\Picible\PicibleService::class,
@@ -71,7 +73,7 @@ class PicibleServiceProvider extends ServiceProvider
         ]);
     }
 
-    public function getPackageName()
+    public function getPackageName(): string
     {
         return 'picible';
     }
