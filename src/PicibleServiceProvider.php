@@ -11,8 +11,8 @@
 
 namespace BrianFaust\Picible;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\ServiceProvider;
 use Intervention\Image\ImageManager;
 use InvalidArgumentException;
 
