@@ -16,57 +16,57 @@ return [
     'adapters' => [
 
         'awss3' => [
-            'driver' => 'BrianFaust\Picible\Adapters\AwsS3',
+            'driver'     => 'BrianFaust\Picible\Adapters\AwsS3',
             'connection' => 'awss3',
         ],
 
         'azure' => [
-            'driver' => 'BrianFaust\Picible\Adapters\Azure',
+            'driver'     => 'BrianFaust\Picible\Adapters\Azure',
             'connection' => 'azure',
         ],
 
         'copy' => [
-            'driver' => 'BrianFaust\Picible\Adapters\Copy',
+            'driver'     => 'BrianFaust\Picible\Adapters\Copy',
             'connection' => 'copy',
         ],
 
         'dropbox' => [
-            'driver' => 'BrianFaust\Picible\Adapters\Dropbox',
+            'driver'     => 'BrianFaust\Picible\Adapters\Dropbox',
             'connection' => 'dropbox',
         ],
 
         'ftp' => [
-            'driver' => 'BrianFaust\Picible\Adapters\Ftp',
+            'driver'     => 'BrianFaust\Picible\Adapters\Ftp',
             'connection' => 'ftp',
         ],
 
         'gridfs' => [
-            'driver' => 'BrianFaust\Picible\Adapters\GridFs',
+            'driver'     => 'BrianFaust\Picible\Adapters\GridFs',
             'connection' => 'gridfs',
         ],
 
         'local' => [
-            'driver' => 'BrianFaust\Picible\Adapters\Local',
+            'driver'     => 'BrianFaust\Picible\Adapters\Local',
             'connection' => 'local',
         ],
 
         'rackspace' => [
-            'driver' => 'BrianFaust\Picible\Adapters\Rackspace',
+            'driver'     => 'BrianFaust\Picible\Adapters\Rackspace',
             'connection' => 'rackspace',
         ],
 
         'sftp' => [
-            'driver' => 'BrianFaust\Picible\Adapters\Sftp',
+            'driver'     => 'BrianFaust\Picible\Adapters\Sftp',
             'connection' => 'sftp',
         ],
 
         'webdav' => [
-            'driver' => 'BrianFaust\Picible\Adapters\WebDav',
+            'driver'     => 'BrianFaust\Picible\Adapters\WebDav',
             'connection' => 'webdav',
         ],
 
         'zip' => [
-            'driver' => 'BrianFaust\Picible\Adapters\ZipArchive',
+            'driver'     => 'BrianFaust\Picible\Adapters\ZipArchive',
             'connection' => 'zip',
         ],
 
@@ -79,9 +79,9 @@ return [
         'colorize' => [
             'driver' => 'BrianFaust\Picible\Filters\Colorize',
             'config' => [
-                'red' => 50,
+                'red'   => 50,
                 'green' => 64,
-                'blue' => 32,
+                'blue'  => 32,
             ],
         ],
 
@@ -99,8 +99,8 @@ return [
         'resize' => [
             'driver' => 'BrianFaust\Picible\Filters\Resize',
             'config' => [
-                'width' => 300,
-                'height' => 300,
+                'width'          => 300,
+                'height'         => 300,
                 'preserve_ratio' => true,
             ],
         ],
@@ -109,9 +109,9 @@ return [
             'driver' => 'BrianFaust\Picible\Filters\Watermark',
             'config' => [
                 'watermarkPath' => storage_path('files/watermark.png'),
-                'position' => 'bottom-right',
-                'coordinatesX' => 10,
-                'coordinatesY' => 0,
+                'position'      => 'bottom-right',
+                'coordinatesX'  => 10,
+                'coordinatesY'  => 0,
             ],
         ],
 
@@ -124,16 +124,16 @@ return [
             ], [
                 'driver' => 'BrianFaust\Picible\Filters\Resize',
                 'config' => [
-                    'width' => 300,
-                    'height' => 300,
+                    'width'          => 300,
+                    'height'         => 300,
                     'preserve_ratio' => true,
                 ],
             ], [
                 'driver' => 'BrianFaust\Picible\Filters\Colorize',
                 'config' => [
-                    'red' => 50,
+                    'red'   => 50,
                     'green' => 64,
-                    'blue' => 32,
+                    'blue'  => 32,
                 ],
             ], [
                 'driver' => 'BrianFaust\Picible\Filters\Greyscale',
@@ -141,9 +141,9 @@ return [
                 'driver' => 'BrianFaust\Picible\Filters\Watermark',
                 'config' => [
                     'watermarkPath' => storage_path('files/watermark.png'),
-                    'position' => 'bottom-right',
-                    'coordinatesX' => 10,
-                    'coordinatesY' => 10,
+                    'position'      => 'bottom-right',
+                    'coordinatesX'  => 10,
+                    'coordinatesY'  => 10,
                 ],
             ],
         ],
