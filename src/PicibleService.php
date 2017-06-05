@@ -1,8 +1,5 @@
 <?php
 
-
-declare(strict_types=1);
-
 /*
  * This file is part of Laravel Picible.
  *
@@ -157,11 +154,11 @@ class PicibleService
         $meta = new Meta($picture, $this->intervention);
 
         $attributes = array_merge($attributes, [
-            'width'       => $meta->getWidth(),
-            'height'      => $meta->getHeight(),
+            'width' => $meta->getWidth(),
+            'height' => $meta->getHeight(),
             'orientation' => $meta->getOrientation(),
-            'mime_type'   => $picture->getMimeType(),
-            'extension'   => $picture->guessExtension(),
+            'mime_type' => $picture->getMimeType(),
+            'extension' => $picture->guessExtension(),
         ]);
 
         return $this->pictures->create($attributes);
@@ -176,7 +173,7 @@ class PicibleService
 
     protected function runFilters(File $file, Picture $picture, array $filters)
     {
-        $availableFilters = config('picible.filters');
+        $availableFilters = config('laravel-picible.filters');
 
         // $picture = $this->intervention->open($file->getRealPath());
         $picture = $this->intervention->make($file->getRealPath());

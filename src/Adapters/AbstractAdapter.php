@@ -1,8 +1,5 @@
 <?php
 
-
-declare(strict_types=1);
-
 /*
  * This file is part of Laravel Picible.
  *
@@ -67,8 +64,8 @@ abstract class AbstractAdapter implements Adapter
 
     public function loadFlysystemConfig()
     {
-        $adapterKey = config('picible.default');
-        $adapterKey = config('picible.adapters.'.$adapterKey.'.connection');
+        $adapterKey = config('laravel-picible.default');
+        $adapterKey = config('laravel-picible.adapters.'.$adapterKey.'.connection');
 
         return config('flysystem.connections.'.$adapterKey);
     }
@@ -102,7 +99,7 @@ abstract class AbstractAdapter implements Adapter
     protected function buildHash(Picture $picture, array $filters = [])
     {
         $state = [
-            'id'      => (string) $picture->getKey(),
+            'id' => (string) $picture->getKey(),
             'filters' => $filters,
         ];
 

@@ -1,8 +1,5 @@
 <?php
 
-
-declare(strict_types=1);
-
 /*
  * This file is part of Laravel Picible.
  *
@@ -14,34 +11,33 @@ declare(strict_types=1);
 
 namespace BrianFaust\Picible;
 
-use BrianFaust\ServiceProvider\AbstractServiceProvider;
+use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\Application;
 use Intervention\Image\ImageManager;
 use InvalidArgumentException;
 
-class PicibleServiceProvider extends AbstractServiceProvider
+class PicibleServiceProvider extends ServiceProvider
 {
-    public function boot(): void
+    public function boot()
     {
-        $this->publishMigrations();
+        $this->publishes([
+            __DIR__.'/../database/migrations' => database_path('migrations'),
+        ], 'migrations');
 
-        $this->publishConfig();
+        $this->publishes([
+            __DIR__.'/../config/laravel-picible.php' => config_path('laravel-picible.php'),
+        ], 'config');
     }
 
-    public function register(): void
+    public function register()
     {
-        parent::register();
+        $this->mergeConfigFrom(__DIR__.'/../config/laravel-picible.php', 'laravel-picible');
 
-        $this->mergeConfig();
+        $this->app->bind(Contracts\PictureRepository::class, Repositories\EloquentPictureRepository::class);
 
-        $this->app->bind(
-            \BrianFaust\Picible\Contracts\PictureRepository::class,
-            \BrianFaust\Picible\Repositories\EloquentPictureRepository::class
-        );
-
-        $this->app->singleton('BrianFaust\Picible\PicibleService', function (Application $app) {
+        $this->app->singleton(PicibleService::class, function (Application $app) {
             $service = new PicibleService(
-                $app->make('BrianFaust\Picible\Contracts\PictureRepository'),
+                $app->make(Contracts\PictureRepository::class),
                 $app,
                 $this->setFilesystemAdapter($app),
                 new ImageManager()
@@ -53,8 +49,8 @@ class PicibleServiceProvider extends AbstractServiceProvider
 
     protected function setFilesystemAdapter($app)
     {
-        $adapterKey = config('picible.default');
-        $config = config('picible.adapters.'.$adapterKey);
+        $adapterKey = config('laravel-picible.default');
+        $config = config('laravel-picible.adapters.'.$adapterKey);
 
         if (empty($config)) {
             throw new InvalidArgumentException("Unsupported adapter [$adapterKey]");
@@ -64,18 +60,5 @@ class PicibleServiceProvider extends AbstractServiceProvider
         $adapter->setConnection($config['connection']);
 
         return $adapter;
-    }
-
-    public function provides(): array
-    {
-        return array_merge(parent::provides(), [
-            \BrianFaust\Picible\PicibleService::class,
-            \BrianFaust\Picible\Contracts\PictureRepository::class,
-        ]);
-    }
-
-    public function getPackageName(): string
-    {
-        return 'picible';
     }
 }
