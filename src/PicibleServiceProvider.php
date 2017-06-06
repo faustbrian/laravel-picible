@@ -18,6 +18,9 @@ use InvalidArgumentException;
 
 class PicibleServiceProvider extends ServiceProvider
 {
+    /**
+     * Bootstrap any application services.
+     */
     public function boot()
     {
         $this->publishes([
@@ -29,12 +32,31 @@ class PicibleServiceProvider extends ServiceProvider
         ], 'config');
     }
 
+    /**
+     * Register any application services.
+     */
     public function register()
     {
         $this->mergeConfigFrom(__DIR__.'/../config/laravel-picible.php', 'laravel-picible');
 
-        $this->app->bind(Contracts\PictureRepository::class, Repositories\EloquentPictureRepository::class);
+        $this->registerRepository();
 
+        $this->registerService();
+    }
+
+    /**
+     * Register the repository.
+     */
+    private function registerRepository()
+    {
+        $this->app->bind(Contracts\PictureRepository::class, Repositories\EloquentPictureRepository::class);
+    }
+
+    /**
+     * Register the service.
+     */
+    private function registerService()
+    {
         $this->app->singleton(PicibleService::class, function (Application $app) {
             $service = new PicibleService(
                 $app->make(Contracts\PictureRepository::class),
@@ -47,7 +69,12 @@ class PicibleServiceProvider extends ServiceProvider
         });
     }
 
-    protected function setFilesystemAdapter($app)
+    /**
+     * Set the filesystem adapater according to configuration.
+     *
+     * @param \Illuminate\Foundation\Application $app
+     */
+    private function setFilesystemAdapter($app)
     {
         $adapterKey = config('laravel-picible.default');
         $config = config('laravel-picible.adapters.'.$adapterKey);

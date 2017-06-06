@@ -99,7 +99,7 @@ abstract class AbstractAdapter implements Adapter
     protected function buildHash(Picture $picture, array $filters = [])
     {
         $state = [
-            'id'      => (string) $picture->getKey(),
+            'id' => (string) $picture->getKey(),
             'filters' => $filters,
         ];
 
