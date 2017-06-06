@@ -23,7 +23,7 @@ class AwsS3 extends AbstractAdapter implements ShareableInterface
     {
         $config = $this->loadFlysystemConfig();
         $client = S3Client::factory([
-            'key' => $config['key'],
+            'key'    => $config['key'],
             'secret' => $config['secret'],
             'region' => isset($config['region']) ? $config['region'] : null,
         ]);
