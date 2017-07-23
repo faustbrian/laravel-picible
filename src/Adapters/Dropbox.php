@@ -11,11 +11,11 @@
 
 namespace BrianFaust\Picible\Adapters;
 
-use BrianFaust\Flysystem\Dropbox\DropboxAdapter;
-use BrianFaust\Flysystem\Filesystem;
-use BrianFaust\Picible\Contracts\ShareableInterface;
-use BrianFaust\Picible\Models\Picture;
 use Dropbox\Client;
+use BrianFaust\Flysystem\Filesystem;
+use BrianFaust\Picible\Models\Picture;
+use BrianFaust\Flysystem\Dropbox\DropboxAdapter;
+use BrianFaust\Picible\Contracts\ShareableInterface;
 
 class Dropbox extends AbstractAdapter implements ShareableInterface
 {

@@ -11,9 +11,9 @@
 
 namespace BrianFaust\Picible\Repositories;
 
+use BrianFaust\Picible\Models\Picture;
 use BrianFaust\Picible\Contracts\Picible;
 use BrianFaust\Picible\Contracts\PictureRepository;
-use BrianFaust\Picible\Models\Picture;
 
 class EloquentPictureRepository implements PictureRepository
 {

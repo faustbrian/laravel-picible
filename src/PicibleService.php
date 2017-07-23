@@ -11,16 +11,16 @@
 
 namespace BrianFaust\Picible;
 
-use BrianFaust\Picible\Contracts\Adapter;
-use BrianFaust\Picible\Contracts\FilterInterface;
-use BrianFaust\Picible\Contracts\Picible;
-use BrianFaust\Picible\Contracts\PictureRepository;
-use BrianFaust\Picible\Models\Picture;
-use BrianFaust\Picible\Util\Meta;
-use Illuminate\Foundation\Application;
-use Intervention\Image\ImageManager;
 use InvalidArgumentException;
+use BrianFaust\Picible\Util\Meta;
+use Intervention\Image\ImageManager;
+use BrianFaust\Picible\Models\Picture;
+use Illuminate\Foundation\Application;
+use BrianFaust\Picible\Contracts\Adapter;
+use BrianFaust\Picible\Contracts\Picible;
 use Symfony\Component\HttpFoundation\File\File;
+use BrianFaust\Picible\Contracts\FilterInterface;
+use BrianFaust\Picible\Contracts\PictureRepository;
 
 class PicibleService
 {
@@ -57,10 +57,10 @@ class PicibleService
         $attributes = $this->getAttributes();
         $filters = $this->getFilters();
 
-        if (!empty($attributes['slot'])) {
+        if (! empty($attributes['slot'])) {
             $record = $this->pictures->getBySlot($attributes['slot'], $model);
 
-            if (!empty($record)) {
+            if (! empty($record)) {
                 if ($overwrite) {
                     $this->deleteById($record->id, $filters);
                 } else {
@@ -98,7 +98,7 @@ class PicibleService
     {
         $filters = $this->getFilters();
 
-        if (!$this->getAdapter()->has($picture, $filters)) {
+        if (! $this->getAdapter()->has($picture, $filters)) {
             throw new InvalidArgumentException('File not found.');
         }
 
@@ -179,13 +179,13 @@ class PicibleService
         $picture = $this->intervention->make($file->getRealPath());
 
         foreach ($filters as $key => $filter) {
-            if (!array_key_exists($filter, $availableFilters)) {
+            if (! array_key_exists($filter, $availableFilters)) {
                 throw new InvalidArgumentException("Unsupported filter [$filter]");
             }
 
             $filter = $availableFilters[$filter];
 
-            if (!isset($filter[0])) {
+            if (! isset($filter[0])) {
                 $this->applyFilter($filter['driver'], $filter['config'], $picture);
             } else {
                 foreach ($filter as $key => $value) {
@@ -203,11 +203,11 @@ class PicibleService
     {
         $abstract = new $driver($config);
 
-        if (!$abstract) {
+        if (! $abstract) {
             throw new InvalidArgumentException("Filter [$abstract] not resolvable.");
         }
 
-        if (!$abstract instanceof FilterInterface) {
+        if (! $abstract instanceof FilterInterface) {
             $abstract = get_class($abstract);
             throw new InvalidArgumentException("Class [$abstract] does not implement FilterInterface.");
         }

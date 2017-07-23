@@ -11,8 +11,8 @@
 
 namespace BrianFaust\Picible\Contracts;
 
-use BrianFaust\Picible\Models\Picture;
 use Intervention\Image\Image;
+use BrianFaust\Picible\Models\Picture;
 
 interface Adapter
 {

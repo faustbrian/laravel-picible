@@ -11,10 +11,10 @@
 
 namespace BrianFaust\Picible;
 
+use InvalidArgumentException;
+use Intervention\Image\ImageManager;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use Intervention\Image\ImageManager;
-use InvalidArgumentException;
 
 class PicibleServiceProvider extends ServiceProvider
 {

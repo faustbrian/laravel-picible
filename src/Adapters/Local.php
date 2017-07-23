@@ -11,8 +11,8 @@
 
 namespace BrianFaust\Picible\Adapters;
 
-use BrianFaust\Picible\Contracts\ShareableInterface;
 use BrianFaust\Picible\Models\Picture;
+use BrianFaust\Picible\Contracts\ShareableInterface;
 
 class Local extends AbstractAdapter implements ShareableInterface
 {
