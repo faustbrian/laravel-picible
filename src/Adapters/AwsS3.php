@@ -12,10 +12,10 @@
 namespace BrianFaust\Picible\Adapters;
 
 use Aws\S3\S3Client;
-use BrianFaust\Flysystem\AwsS3v2\AwsS3Adapter;
 use BrianFaust\Flysystem\Filesystem;
-use BrianFaust\Picible\Contracts\ShareableInterface;
 use BrianFaust\Picible\Models\Picture;
+use BrianFaust\Flysystem\AwsS3v2\AwsS3Adapter;
+use BrianFaust\Picible\Contracts\ShareableInterface;
 
 class AwsS3 extends AbstractAdapter implements ShareableInterface
 {

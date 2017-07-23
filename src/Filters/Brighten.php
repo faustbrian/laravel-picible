@@ -11,8 +11,8 @@
 
 namespace BrianFaust\Picible\Filters;
 
-use BrianFaust\Picible\Contracts\FilterInterface;
 use Intervention\Image\Image;
+use BrianFaust\Picible\Contracts\FilterInterface;
 
 class Brighten implements FilterInterface
 {
