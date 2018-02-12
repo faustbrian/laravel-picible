@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace BrianFaust\Picible\Filters;
 
-use Intervention\Image\Image;
 use BrianFaust\Picible\Contracts\FilterInterface;
+use Intervention\Image\Image;
 
 class Orientate implements FilterInterface
 {

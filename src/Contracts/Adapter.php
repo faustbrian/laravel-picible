@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace BrianFaust\Picible\Contracts;
 
-use Intervention\Image\Image;
 use BrianFaust\Picible\Models\Picture;
+use Intervention\Image\Image;
 
 interface Adapter
 {
