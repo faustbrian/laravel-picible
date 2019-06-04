@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of Laravel Picible.
  *
- * (c) Brian Faust <hello@brianfaust.me>
+ * (c) Brian Faust <hello@basecode.sh>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -18,57 +18,57 @@ return [
     'adapters' => [
 
         'awss3' => [
-            'driver'     => 'BrianFaust\Picible\Adapters\AwsS3',
+            'driver'     => 'Artisanry\Picible\Adapters\AwsS3',
             'connection' => 'awss3',
         ],
 
         'azure' => [
-            'driver'     => 'BrianFaust\Picible\Adapters\Azure',
+            'driver'     => 'Artisanry\Picible\Adapters\Azure',
             'connection' => 'azure',
         ],
 
         'copy' => [
-            'driver'     => 'BrianFaust\Picible\Adapters\Copy',
+            'driver'     => 'Artisanry\Picible\Adapters\Copy',
             'connection' => 'copy',
         ],
 
         'dropbox' => [
-            'driver'     => 'BrianFaust\Picible\Adapters\Dropbox',
+            'driver'     => 'Artisanry\Picible\Adapters\Dropbox',
             'connection' => 'dropbox',
         ],
 
         'ftp' => [
-            'driver'     => 'BrianFaust\Picible\Adapters\Ftp',
+            'driver'     => 'Artisanry\Picible\Adapters\Ftp',
             'connection' => 'ftp',
         ],
 
         'gridfs' => [
-            'driver'     => 'BrianFaust\Picible\Adapters\GridFs',
+            'driver'     => 'Artisanry\Picible\Adapters\GridFs',
             'connection' => 'gridfs',
         ],
 
         'local' => [
-            'driver'     => 'BrianFaust\Picible\Adapters\Local',
+            'driver'     => 'Artisanry\Picible\Adapters\Local',
             'connection' => 'local',
         ],
 
         'rackspace' => [
-            'driver'     => 'BrianFaust\Picible\Adapters\Rackspace',
+            'driver'     => 'Artisanry\Picible\Adapters\Rackspace',
             'connection' => 'rackspace',
         ],
 
         'sftp' => [
-            'driver'     => 'BrianFaust\Picible\Adapters\Sftp',
+            'driver'     => 'Artisanry\Picible\Adapters\Sftp',
             'connection' => 'sftp',
         ],
 
         'webdav' => [
-            'driver'     => 'BrianFaust\Picible\Adapters\WebDav',
+            'driver'     => 'Artisanry\Picible\Adapters\WebDav',
             'connection' => 'webdav',
         ],
 
         'zip' => [
-            'driver'     => 'BrianFaust\Picible\Adapters\ZipArchive',
+            'driver'     => 'Artisanry\Picible\Adapters\ZipArchive',
             'connection' => 'zip',
         ],
 
@@ -79,7 +79,7 @@ return [
     'filters' => [
 
         'colorize' => [
-            'driver' => 'BrianFaust\Picible\Filters\Colorize',
+            'driver' => 'Artisanry\Picible\Filters\Colorize',
             'config' => [
                 'red'   => 50,
                 'green' => 64,
@@ -88,18 +88,18 @@ return [
         ],
 
         'greyscale' => [
-            'driver' => 'BrianFaust\Picible\Filters\Greyscale',
+            'driver' => 'Artisanry\Picible\Filters\Greyscale',
         ],
 
         'pixelate' => [
-            'driver' => 'BrianFaust\Picible\Filters\Pixelate',
+            'driver' => 'Artisanry\Picible\Filters\Pixelate',
             'config' => [
                 'amount' => 15,
             ],
         ],
 
         'resize' => [
-            'driver' => 'BrianFaust\Picible\Filters\Resize',
+            'driver' => 'Artisanry\Picible\Filters\Resize',
             'config' => [
                 'width'          => 300,
                 'height'         => 300,
@@ -108,7 +108,7 @@ return [
         ],
 
         'watermark' => [
-            'driver' => 'BrianFaust\Picible\Filters\Watermark',
+            'driver' => 'Artisanry\Picible\Filters\Watermark',
             'config' => [
                 'watermarkPath' => storage_path('files/watermark.png'),
                 'position'      => 'bottom-right',
@@ -119,28 +119,28 @@ return [
 
         'avatarize' => [
             [
-                'driver' => 'BrianFaust\Picible\Filters\Pixelate',
+                'driver' => 'Artisanry\Picible\Filters\Pixelate',
                 'config' => [
                     'amount' => 15,
                 ],
             ], [
-                'driver' => 'BrianFaust\Picible\Filters\Resize',
+                'driver' => 'Artisanry\Picible\Filters\Resize',
                 'config' => [
                     'width'          => 300,
                     'height'         => 300,
                     'preserve_ratio' => true,
                 ],
             ], [
-                'driver' => 'BrianFaust\Picible\Filters\Colorize',
+                'driver' => 'Artisanry\Picible\Filters\Colorize',
                 'config' => [
                     'red'   => 50,
                     'green' => 64,
                     'blue'  => 32,
                 ],
             ], [
-                'driver' => 'BrianFaust\Picible\Filters\Greyscale',
+                'driver' => 'Artisanry\Picible\Filters\Greyscale',
             ], [
-                'driver' => 'BrianFaust\Picible\Filters\Watermark',
+                'driver' => 'Artisanry\Picible\Filters\Watermark',
                 'config' => [
                     'watermarkPath' => storage_path('files/watermark.png'),
                     'position'      => 'bottom-right',

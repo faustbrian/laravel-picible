@@ -5,19 +5,19 @@ declare(strict_types=1);
 /*
  * This file is part of Laravel Picible.
  *
- * (c) Brian Faust <hello@brianfaust.me>
+ * (c) Brian Faust <hello@basecode.sh>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Picible\Adapters;
+namespace Artisanry\Picible\Adapters;
 
 use Aws\S3\S3Client;
-use BrianFaust\Flysystem\AwsS3v2\AwsS3Adapter;
-use BrianFaust\Flysystem\Filesystem;
-use BrianFaust\Picible\Contracts\ShareableInterface;
-use BrianFaust\Picible\Models\Picture;
+use Artisanry\Flysystem\AwsS3v2\AwsS3Adapter;
+use Artisanry\Flysystem\Filesystem;
+use Artisanry\Picible\Contracts\ShareableInterface;
+use Artisanry\Picible\Models\Picture;
 
 class AwsS3 extends AbstractAdapter implements ShareableInterface
 {

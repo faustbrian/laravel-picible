@@ -1,12 +1,12 @@
 {
-    "name": "faustbrian/laravel-picible",
+    "name": "artisanry/picible",
     "description": "Picture attachment and management for your Eloquent models.",
-    "keywords": ["laravel", "framework", "Laravel-messageable", "Laravel Messageable", "Brian Faust", "faustbrian", "laravel-picible"],
+    "keywords": ["laravel", "framework", "Laravel-messageable", "Laravel Messageable", "laravel-picible"],
     "license": "MIT",
     "authors": [{
         "name": "Brian Faust",
-        "email": "hello@brianfaust.me",
-        "homepage": "https://brianfaust.me"
+        "email": "hello@basecode.sh",
+        "homepage": "https://basecode.sh"
     }],
     "require": {
         "php": "^7.1",
@@ -21,12 +21,12 @@
     },
     "autoload": {
         "psr-4": {
-            "BrianFaust\\Picible\\": "src/"
+            "Artisanry\\Picible\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "BrianFaust\\Tests\\Picible\\": "tests"
+            "Artisanry\\Tests\\Picible\\": "tests"
         }
     },
     "config": {
@@ -39,7 +39,7 @@
         },
         "laravel": {
             "providers": [
-                "BrianFaust\\Picible\\PicibleServiceProvider"
+                "Artisanry\\Picible\\PicibleServiceProvider"
             ]
         }
     },

@@ -5,17 +5,17 @@ declare(strict_types=1);
 /*
  * This file is part of Laravel Picible.
  *
- * (c) Brian Faust <hello@brianfaust.me>
+ * (c) Brian Faust <hello@basecode.sh>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Picible\Adapters;
+namespace Artisanry\Picible\Adapters;
 
-use BrianFaust\Flysystem\Filesystem;
-use BrianFaust\Picible\Contracts\Adapter;
-use BrianFaust\Picible\Models\Picture;
+use Artisanry\Flysystem\Filesystem;
+use Artisanry\Picible\Contracts\Adapter;
+use Artisanry\Picible\Models\Picture;
 use GrahamCampbell\Flysystem\FlysystemManager;
 use Illuminate\Support\Facades\File as IlluminateFile;
 use Intervention\Image\Image;

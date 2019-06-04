@@ -1,16 +1,16 @@
 # Laravel Picible
 
-[![Build Status](https://img.shields.io/travis/faustbrian/Laravel-Picible/master.svg?style=flat-square)](https://travis-ci.org/faustbrian/Laravel-Picible)
-[![PHP from Packagist](https://img.shields.io/packagist/php-v/faustbrian/laravel-picible.svg?style=flat-square)]()
-[![Latest Version](https://img.shields.io/github/release/faustbrian/Laravel-Picible.svg?style=flat-square)](https://github.com/faustbrian/Laravel-Picible/releases)
-[![License](https://img.shields.io/packagist/l/faustbrian/Laravel-Picible.svg?style=flat-square)](https://packagist.org/packages/faustbrian/Laravel-Picible)
+[![Build Status](https://img.shields.io/travis/artisanry/Picible/master.svg?style=flat-square)](https://travis-ci.org/artisanry/Picible)
+[![PHP from Packagist](https://img.shields.io/packagist/php-v/artisanry/picible.svg?style=flat-square)]()
+[![Latest Version](https://img.shields.io/github/release/artisanry/Picible.svg?style=flat-square)](https://github.com/artisanry/Picible/releases)
+[![License](https://img.shields.io/packagist/l/artisanry/Picible.svg?style=flat-square)](https://packagist.org/packages/artisanry/Picible)
 
 ## Installation
 
 Require this package, with [Composer](https://getcomposer.org/), in the root directory of your project.
 
 ``` bash
-$ composer require faustbrian/laravel-picible
+$ composer require artisanry/picible
 ```
 
 The package configuration will now be located at `app/config/picible.php` and the migration at `database/migrations/2015_01_30_000000_create_picible_table.php`.
@@ -29,8 +29,8 @@ php artisan migrate
 
 namespace App;
 
-use BrianFaust\Picible\Contracts\Picible as PicibleContract;
-use BrianFaust\Picible\Traits\PicibleTrait;
+use Artisanry\Picible\Contracts\Picible as PicibleContract;
+use Artisanry\Picible\Traits\PicibleTrait;
 
 class User extends Model implements PicibleContract {
 
@@ -46,7 +46,7 @@ class User extends Model implements PicibleContract {
 namespace App\Http\Controllers;
 
 use App\User;
-use BrianFaust\Picible\PicibleService as Picible;
+use Artisanry\Picible\PicibleService as Picible;
 use Illuminate\Http\Request;
 
 class PicibleController extends Controller {
@@ -85,7 +85,7 @@ $ phpunit
 
 ## Security
 
-If you discover a security vulnerability within this package, please send an e-mail to hello@brianfaust.me. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within this package, please send an e-mail to hello@basecode.sh. All security vulnerabilities will be promptly addressed.
 
 ## Credits
 
@@ -94,7 +94,7 @@ If you discover a security vulnerability within this package, please send an e-m
 
 ## License
 
-[MIT](LICENSE) © [Brian Faust](https://brianfaust.me)
+[MIT](LICENSE) © [Brian Faust](https://basecode.sh)
 
 <!-- ## To-Do
 - Implement **Batch processing** with an easy to use syntax.

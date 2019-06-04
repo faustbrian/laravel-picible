@@ -5,20 +5,20 @@ declare(strict_types=1);
 /*
  * This file is part of Laravel Picible.
  *
- * (c) Brian Faust <hello@brianfaust.me>
+ * (c) Brian Faust <hello@basecode.sh>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Picible;
+namespace Artisanry\Picible;
 
-use BrianFaust\Picible\Contracts\Adapter;
-use BrianFaust\Picible\Contracts\FilterInterface;
-use BrianFaust\Picible\Contracts\Picible;
-use BrianFaust\Picible\Contracts\PictureRepository;
-use BrianFaust\Picible\Models\Picture;
-use BrianFaust\Picible\Util\Meta;
+use Artisanry\Picible\Contracts\Adapter;
+use Artisanry\Picible\Contracts\FilterInterface;
+use Artisanry\Picible\Contracts\Picible;
+use Artisanry\Picible\Contracts\PictureRepository;
+use Artisanry\Picible\Models\Picture;
+use Artisanry\Picible\Util\Meta;
 use Illuminate\Foundation\Application;
 use Intervention\Image\ImageManager;
 use InvalidArgumentException;
