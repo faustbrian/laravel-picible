@@ -13,11 +13,11 @@ declare(strict_types=1);
 
 namespace Artisanry\Picible\Adapters;
 
-use Aws\S3\S3Client;
 use Artisanry\Flysystem\AwsS3v2\AwsS3Adapter;
 use Artisanry\Flysystem\Filesystem;
 use Artisanry\Picible\Contracts\ShareableInterface;
 use Artisanry\Picible\Models\Picture;
+use Aws\S3\S3Client;
 
 class AwsS3 extends AbstractAdapter implements ShareableInterface
 {
