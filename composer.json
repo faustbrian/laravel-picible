@@ -18,7 +18,7 @@
         "php": "^7.2",
         "illuminate/support": "^5.8|^6.0",
         "intervention/image": "^2.4",
-        "graham-campbell/flysystem": "^4.1"
+        "graham-campbell/flysystem": "^6.0.0"
     },
     "require-dev": {
         "graham-campbell/testbench": "^5.0",
